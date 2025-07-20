@@ -36,14 +36,38 @@
 </div>
 
 <!-- Group Chat -->
-<div id="groupChat" style="display: none;">
-    <h3>Groups</h3>
-    <ul id="groupList"></ul>
+<!--<div id="groupChat" style="display: none;">-->
+<!--    <h3>Groups</h3>-->
+<!--    <ul id="groupList"></ul>-->
 
-    <h3>Group Chat: <span id="currentGroup">[Select a group]</span></h3>
-    <ul id="groupMessageList"></ul>
-    <input type="text" id="groupMessageInput" placeholder="Type a message...">
-    <button onclick="sendGroupMessage()">Send</button>
+<!--    <h3>Group Chat: <span id="currentGroup">[Select a group]</span></h3>-->
+<!--    <ul id="groupMessageList"></ul>-->
+<!--    <input type="text" id="groupMessageInput" placeholder="Type a message...">-->
+<!--    <button onclick="sendGroupMessage()">Send</button>-->
+<!--</div>-->
+<div id="groupChat" class="section hidden">
+    <h3>Group Chat</h3>
+    <button id="createGroupBtn" class="btn" onclick="showCreateGroupForm()">Create New Group</button>
+
+    <div id="createGroupForm" style="display:none; margin-top: 10px;">
+        <input type="text" id="newGroupName" placeholder="Enter group name" />
+        <button onclick="createGroup()">Create</button>
+        <button onclick="hideCreateGroupForm()">Cancel</button>
+        <p id="createGroupMessage"></p>
+    </div>
+
+    <h4>Joined Groups</h4>
+    <ul id="joinedGroupList"></ul>
+
+    <h4>Other Groups</h4>
+    <ul id="otherGroupList"></ul>
+
+    <div>
+        <h4>Chat in: <span id="currentGroup">[Select a group]</span></h4>
+        <ul id="groupMessageList"></ul>
+        <input type="text" id="groupMessageInput" placeholder="Type a message..." />
+        <button onclick="sendGroupMessage()">Send</button>
+    </div>
 </div>
 
 <!-- AI Chat -->
