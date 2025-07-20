@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spring Boot Private Chat</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+<div id="authContainer">
+    <h3>Login / Sign Up</h3>
+    <input type="text" id="authUsername" placeholder="Username">
+    <input type="password" id="authPassword" placeholder="Password">
+    <button onclick="signup()">Sign Up</button>
+    <button onclick="login()">Login</button>
+    <p id="authMessage"></p>
+</div>
+
+<div>
+    <label for="chatModeSelect"><strong>Select Chat Type:</strong></label>
+    <select id="chatModeSelect" onchange="switchChatMode()">
+        <option value="">-- Choose --</option>
+        <option value="private">Private Chat</option>
+        <option value="group">Group Chat</option>
+        <option value="ai">AI Chatbot</option>
+    </select>
+</div>
+
+<!-- Private Chat -->
+<div id="privateChat" style="display: none;">
+    <h3>Users</h3>
+    <ul id="userList"></ul>
+
+    <h3>Chat with: <span id="currentRecipient">[Select a user]</span></h3>
+    <ul id="messageList"></ul>
+    <input type="text" id="messageInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<!-- Group Chat -->
+<div id="groupChat" style="display: none;">
+    <h3>Groups</h3>
+    <ul id="groupList"></ul>
+
+    <h3>Group Chat: <span id="currentGroup">[Select a group]</span></h3>
+    <ul id="groupMessageList"></ul>
+    <input type="text" id="groupMessageInput" placeholder="Type a message...">
+    <button onclick="sendGroupMessage()">Send</button>
+</div>
+
+<!-- AI Chat -->
+<div id="openaiChat" style="display: none; margin-top: 30px; max-width: 400px; background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <h3>Ask the AI Chatbot</h3>
+    <input type="text" id="question" placeholder="Type your question..." />
+    <button onclick="ask()">Ask</button>
+    <p id="answer"></p>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>
