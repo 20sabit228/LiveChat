@@ -1,5 +1,4 @@
 let stompClient = null;
-//let currentUsername = "sabit"; // Replace with the logged-in user's name
 let selectedRecipient = null;
 let currentUsername = null;
 let currentUserGroups = []; // array of groupIds user joined
@@ -228,40 +227,7 @@ function showMessage(message) {
     li.textContent = `${message.sender}: ${message.content}`;
     messageList.appendChild(li);
 }
-// Fetch and display groups
-// function loadGroups() {
-//     const groupList = document.getElementById('groupList');
-//     groupList.innerHTML = '';
-//     fetch('/groups')
-//         .then(response => response.json())
-//         .then(groups => {
-//             groups.forEach(group => {
-//                 const li = document.createElement('li');
-//                 li.textContent = group.name;
-//                 li.onclick = () => selectGroup(group.id, group.name);
-//                 groupList.appendChild(li);
-//             });
-//         });
-// }
-//
-//
-// function selectGroup(groupId, groupName) {
-//     selectedGroupId = groupId;
-//     document.getElementById('currentGroup').textContent = groupName;
-//     fetch(`/group-messages/${groupId}`)
-//         .then(response => response.json())
-//         .then(messages => {
-//             const messageList = document.getElementById('groupMessageList');
-//             messageList.innerHTML = '';
-//             messages.forEach(showGroupMessage);
-//         });
-//     // Subscribe to group topic
-//     if (stompClient) {
-//         stompClient.subscribe(`/topic/group/${groupId}`, function (message) {
-//             showGroupMessage(JSON.parse(message.body));
-//         });
-//     }
-// }
+
 function connect() {
     const socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);

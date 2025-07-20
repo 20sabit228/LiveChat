@@ -48,7 +48,9 @@ public class ChatController {
     public void sendMessage(@Payload Chatmessage chatMessage) {
         chatMessage.setTimestamp(Instant.now());  // Use Instant.now()
         chatMessageRepository.save(chatMessage);
-        messagingTemplate.convertAndSend("/topic/public", chatMessage);
+        messagingTemplate.convertAndSend("/topic/user/" + chatMessage.getSender(), chatMessage);
+        messagingTemplate.convertAndSend("/topic/user/" + chatMessage.getRecipient(), chatMessage);
+
     }
     @GetMapping("/group-messages/{groupId}")
     public List<Chatmessage> getGroupMessages(@PathVariable String groupId) {
