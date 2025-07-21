@@ -27,7 +27,7 @@
 2. **Run the Project**  
    - Clone the repository:  
      ```bash
-     git clone <https://github.com/20sabit228/LiveChat.git>
+     git clone https://github.com/20sabit228/LiveChat.git
      ```  
    - Open the project in IntelliJ IDEA  
    - Wait for dependencies to load  
